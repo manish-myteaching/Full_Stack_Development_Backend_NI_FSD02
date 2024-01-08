@@ -1,4 +1,4 @@
-package oprator;
+package operator;
 
 public class IncrDercDemo2 {
 
