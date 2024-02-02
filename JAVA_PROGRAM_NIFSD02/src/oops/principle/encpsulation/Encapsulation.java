@@ -1,6 +1,5 @@
 package oops.principle.encpsulation;
-
-public class Encapsulation {
+ class Encapsulation {
 	private String empSalary;
 	private int empNo;
 	private int age;
@@ -9,11 +8,11 @@ public class Encapsulation {
 		return age;
 	}
 
-	public void setAge(int age) throws Exception {
+	public void setAge(int age) throws InvalidArgumentException {
 		if (age > 18 && age < 100) {
 			this.age = age;
 		} else {
-			throw new Exception("Age Value is not allowed");
+			throw new InvalidArgumentException(Constant.INVAID_AGE);
 		}
 	}
 
@@ -29,12 +28,16 @@ public class Encapsulation {
 		return empNo;
 	}
 
-	public void setEmpNo(int empNo) throws Exception {
+	public void setEmpNo(int empNo) throws InvalidArgumentException {
 		if (empNo > 0) {
 			this.empNo = empNo;
 		} else {
-			throw new Exception("Invalid");
+			throw new InvalidArgumentException(Constant.INVAID_EMP_NO);
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Encapsulation [empSalary=" + empSalary + ", empNo=" + empNo + ", age=" + age + "]";
+	}
 }

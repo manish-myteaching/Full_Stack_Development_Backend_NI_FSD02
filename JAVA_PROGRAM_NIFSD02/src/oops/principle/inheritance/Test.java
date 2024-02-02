@@ -1,11 +1,9 @@
 package oops.principle.inheritance;
 
 public class Test {
-
 	public static void main(String[] args) {
-		Child child=new Child();
-		child.show();
-
+		Child child=new Child();	
+		System.out.println(child.toString());
 	}
 
 }
