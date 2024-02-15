@@ -1,0 +1,14 @@
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>demo</servlet-name>
+		<servlet-class>WelcomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>demo</servlet-name>
+		<url-pattern>/welcome</url-pattern>
+	</servlet-mapping>
+</web-app>
+
+
+
