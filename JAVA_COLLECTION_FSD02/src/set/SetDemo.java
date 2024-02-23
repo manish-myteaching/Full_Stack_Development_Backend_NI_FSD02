@@ -17,6 +17,7 @@ public class SetDemo {
 		list.add("Dehli");
 		list.add("Mumbai");
 		System.out.println(list);
+	
 
 		Set set = new HashSet();
 		set.add("Pune");

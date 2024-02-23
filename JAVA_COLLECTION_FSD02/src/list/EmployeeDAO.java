@@ -3,6 +3,7 @@ package list;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class EmployeeDAO {
 
@@ -56,8 +57,7 @@ public class EmployeeDAO {
 
 		// Java8
 		System.out.println("Java8");
-		list.stream().forEach(t -> System.out.println(t));
-
+		list.forEach(t -> System.out.println(t));
 	}
 
 }
