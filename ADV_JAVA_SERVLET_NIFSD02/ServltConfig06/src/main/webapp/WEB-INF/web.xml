@@ -1,0 +1,27 @@
+<!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+	<servlet>
+		<servlet-name>sc</servlet-name>
+		<servlet-class>com.barclays.controller.ServletConfigTest</servlet-class>
+		<init-param>
+			<param-name>driver</param-name>
+			<param-value>oracle.jdbc.OracleDriver</param-value>
+		</init-param>
+		<init-param>
+			<param-name>url</param-name>
+			<param-value>jdbc:oracle:thin@localhost:1521:XE</param-value>
+		</init-param>
+		<init-param>
+			<param-name>pwd</param-name>
+			<param-value>tiger</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sc</servlet-name>
+		<url-pattern>/sc</url-pattern>
+	</servlet-mapping>
+
+</web-app>
