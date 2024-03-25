@@ -2,6 +2,11 @@
 "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>Manish</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>sc</servlet-name>
 		<servlet-class>com.barclays.controller.ServletConfigTest</servlet-class>
@@ -19,9 +24,40 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+
+	<servlet>
+		<servlet-name>sc2</servlet-name>
+		<servlet-class>com.barclays.controller.ServletConfigTest2</servlet-class>
+		<init-param>
+			<param-name>driver</param-name>
+			<param-value>com.mysql.jdbc.Driver</param-value>
+		</init-param>
+		<init-param>
+			<param-name>url</param-name>
+			<param-value>jdbc:mysql://localhost:3306/sonoo</param-value>
+		</init-param>
+		<init-param>
+			<param-name>pwd</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>sc3</servlet-name>
+		<servlet-class>com.barclays.controller.ServletConfigTest3</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>sc</servlet-name>
 		<url-pattern>/sc</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>sc2</servlet-name>
+		<url-pattern>/sc2</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>sc3</servlet-name>
+		<url-pattern>/sc3</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>

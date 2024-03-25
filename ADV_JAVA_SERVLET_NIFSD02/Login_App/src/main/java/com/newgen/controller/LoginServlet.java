@@ -11,7 +11,7 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 
 public class LoginServlet extends GenericServlet {
-	LoginDAO login = new LoginDAO(); //Sington 
+	LoginDAO login = new LoginDAO(); //Singleton 
 
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
@@ -23,6 +23,7 @@ public class LoginServlet extends GenericServlet {
 		boolean result = login.getLogin(uname, password);
 		if (result) {
 			pw.println("<h2>Login Success</h2>");
+			pw.println("<h2>Welcome To Product</h2>");
 		} else {
 			pw.println("<h2>Login Failed</h2>");
 		}

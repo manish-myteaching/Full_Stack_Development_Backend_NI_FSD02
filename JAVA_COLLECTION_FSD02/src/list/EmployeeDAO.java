@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class EmployeeDAO {
 
@@ -57,7 +58,8 @@ public class EmployeeDAO {
 
 		// Java8
 		System.out.println("Java8");
-		list.forEach(t -> System.out.println(t));
-	}
+		// list.forEach((employee) -> System.out.println(employee));
 
+		list.stream().filter(t -> t.getSalary() >= 7000).forEach(System.out::println);
+	}
 }

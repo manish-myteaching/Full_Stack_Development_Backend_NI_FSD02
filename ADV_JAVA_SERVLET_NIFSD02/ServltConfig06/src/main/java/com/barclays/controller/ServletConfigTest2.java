@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class ServletConfigTest extends HttpServlet {
+public class ServletConfigTest2 extends HttpServlet {
 
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		/*
@@ -19,12 +19,13 @@ public class ServletConfigTest extends HttpServlet {
 		 * sc.getInitParameter("url"); String s3 = sc.getInitParameter("pwd");
 		 * System.out.println(s1); System.out.println(s2); System.out.println(s3);
 		 */
-
+		
 		ServletContext sContext = getServletContext();
 		System.out.println(sContext.hashCode());
 		String s = (String) sContext.getInitParameter("name");
 		System.out.println(s);
-		sContext.setAttribute("Company", "INFY");
+		String s2=(String) sContext.getInitParameter("company");
+		System.out.println(s2);
 	}
 
 }

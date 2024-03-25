@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class ServletConfigTest extends HttpServlet {
+public class ServletConfigTest3 extends HttpServlet {
 
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		/*
@@ -24,7 +24,9 @@ public class ServletConfigTest extends HttpServlet {
 		System.out.println(sContext.hashCode());
 		String s = (String) sContext.getInitParameter("name");
 		System.out.println(s);
-		sContext.setAttribute("Company", "INFY");
+		
+		String s2=(String) sContext.getInitParameter("company");
+		System.out.println(s2);
 	}
 
 }
