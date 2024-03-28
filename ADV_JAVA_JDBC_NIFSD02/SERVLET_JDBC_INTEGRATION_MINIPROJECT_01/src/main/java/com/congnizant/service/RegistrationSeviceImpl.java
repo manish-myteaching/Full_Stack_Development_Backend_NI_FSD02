@@ -26,8 +26,12 @@ public class RegistrationSeviceImpl implements RegistrationSevice {
 		
 		//Call Persistance Layer
 		RegistrationDAO rd=RegistrationDAOImpl.getInstace();
+		UserInfoVO userInfo = rd.registerUserInfo(new UserInfoDTO(user.getFirstName().toUpperCase(), user.getLastName().toUpperCase(), user.getUser(), user.getPassword()));
 		
-		UserInfoVO userInfo = rd.registerUserInfo(new UserInfoDTO(user.getFirstName(), user.getLastName(), user.getUser(), user.getPassword())); 
+		if(userInfo !=null) {
+			//Mail --Async 
+			//3-rd party call
+		}
 		return userInfo;
 	}
 
