@@ -29,10 +29,10 @@ public class RegistrationServlet extends HttpServlet {
 		resp.setContentType("text/html");  
 		PrintWriter pw=resp.getWriter();
 		if(userInfo !=null) {
-			pw.println("You have Successfully Registred");
+			pw.println("<h1>You have Successfully Registred<h1>");
 			pw.println("<a href="+"login.html"+">Login</a>");
 		} else {
-			pw.println("You have not Registred..Pleas Try again");
+			pw.println("<h1>You have not Registred..Pleas Try again<h1>");
 		}	
 	}
 

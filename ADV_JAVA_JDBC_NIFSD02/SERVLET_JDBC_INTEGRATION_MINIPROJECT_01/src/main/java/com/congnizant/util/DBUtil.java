@@ -10,19 +10,6 @@ import com.congnizant.constant.CommonConstant;
 
 public class DBUtil {
 
-	private static DBUtil INSTANCE = null;
-
-	private DBUtil() {
-
-	}
-
-	public static synchronized DBUtil getInstace() {
-		if (INSTANCE == null) {
-			return new DBUtil();
-		}
-		return INSTANCE;
-	}
-
 	static {
 		try {
 			Class.forName(CommonConstant.DRIVER_CLASS);
@@ -35,30 +22,38 @@ public class DBUtil {
 	/*
 	 * get connection
 	 */
-	public Connection getConnection() throws SQLException {
+	public static Connection getConnection() throws SQLException {
 		// step2 create the connection object
 		Connection con = DriverManager.getConnection(CommonConstant.URL, CommonConstant.USER, CommonConstant.PASSWORD);
 		return con;
 	}
 
-	public void closeConnection(Statement stmt, Connection con) throws SQLException {
-		if (stmt != null) {
-			stmt.close();
-		}
-		if (con != null) {
-			con.close();
+	public static void closeConnection(Statement stmt, Connection con)  {
+		try {
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		} catch (SQLException s) {
+			s.printStackTrace();
 		}
 	}
 
-	public void closeConnection(Statement stmt, Connection con, ResultSet rs) throws SQLException {
-		if (stmt != null) {
-			stmt.close();
-		}
-		if (con != null) {
-			con.close();
-		}
-		if (rs != null) {
-			rs.close();
+	public static void closeConnection(Statement stmt, Connection con, ResultSet rs) {
+		try {
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+			if (rs != null) {
+				rs.close();
+			}
+		} catch (SQLException s) {
+			s.printStackTrace();
 		}
 	}
 

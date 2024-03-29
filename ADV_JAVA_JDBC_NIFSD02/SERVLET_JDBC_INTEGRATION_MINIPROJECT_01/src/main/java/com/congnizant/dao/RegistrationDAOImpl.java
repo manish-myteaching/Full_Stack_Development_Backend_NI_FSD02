@@ -2,6 +2,7 @@ package com.congnizant.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import com.congnizant.constant.QueryConstant;
 import com.congnizant.dto.UserInfoDTO;
@@ -25,13 +26,15 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 
 	@Override
 	public UserInfoVO registerUserInfo(UserInfoDTO user) {
-		System.out.println("DAO Layer=>"+"registerUserInfo");
+		System.out.println("DAO Layer=>" + "registerUserInfo");
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
-			Connection con = DBUtil.getInstace().getConnection();
+			con = DBUtil.getConnection();
 			System.out.println("Perform the operation with DB");
 			// step3 create the statement object
 
-			PreparedStatement pstmt = con.prepareStatement(QueryConstant.INSERT_USER_INFO_QUERY);
+			pstmt = con.prepareStatement(QueryConstant.INSERT_USER_INFO_QUERY);
 			pstmt.setString(1, user.getFirstName());
 			pstmt.setString(2, user.getLastName());
 			pstmt.setString(3, user.getUser());
@@ -42,32 +45,31 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 			if (res > 0) {
 				System.out.println(res + " Record insert succesfully");
 			}
-
-			// step5 close the connection object
-			DBUtil.getInstace().closeConnection(pstmt, con);
-			
-			UserInfoVO userInfoVO=  new UserInfoVO(user.getFirstName(),user.getLastName(),user.getUser(),user.getPassword());
+			UserInfoVO userInfoVO = new UserInfoVO(user.getFirstName(), user.getLastName(), user.getUser(),
+					user.getPassword());
 
 			return userInfoVO;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println(" Record is not insert succesfully");
 			e.printStackTrace();
 			return null;
+		} finally {
+			DBUtil.closeConnection(pstmt, con);
 		}
 
 	}
 
 	@Override
 	public UserInfoVO UpdateUserInfo(UserInfoDTO user) {
-		System.out.println("DAO Layer=>"+"registerUserInfo");
+		System.out.println("DAO Layer=>" + "registerUserInfo");
 		try {
-			Connection con = DBUtil.getInstace().getConnection();
+			Connection con = DBUtil.getConnection();
 			System.out.println("Perform the operation with DB");
 			// step3 create the statement object
 			PreparedStatement pstmt = con.prepareStatement(QueryConstant.UPDATE_USER_INFO_QUERY);
 			pstmt.setString(1, user.getUser());
-			
+
 			// step4 execute query
 			int res = pstmt.executeUpdate();
 			if (res > 0) {
@@ -75,9 +77,10 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 			}
 
 			// step5 close the connection object
-			DBUtil.getInstace().closeConnection(pstmt, con);
-			
-			UserInfoVO userInfoVO=  new UserInfoVO(user.getFirstName(),user.getLastName(),user.getUser(),user.getPassword());
+			DBUtil.closeConnection(pstmt, con);
+
+			UserInfoVO userInfoVO = new UserInfoVO(user.getFirstName(), user.getLastName(), user.getUser(),
+					user.getPassword());
 
 			return userInfoVO;
 		} catch (Exception e) {

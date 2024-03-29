@@ -31,7 +31,7 @@ public class LoginDAOImpl implements LoginDAO {
 		ResultSet rs = null;
 		System.out.println("DAO Layer=>" + "getLogin");
 		try {
-			con = DBUtil.getInstace().getConnection();
+			con = DBUtil.getConnection();
 			System.out.println("Perform the operation with DB");
 			// step3 create the statement object
 
@@ -48,13 +48,8 @@ public class LoginDAOImpl implements LoginDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
-		} finally {
-			try {
-				DBUtil.getInstace().closeConnection(pstmt, con, rs);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		} finally {	
+				DBUtil.closeConnection(pstmt, con, rs);		
 		}
 
 	}
