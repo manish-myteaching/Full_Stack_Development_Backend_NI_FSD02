@@ -9,7 +9,19 @@ import java.util.List;
 
 import com.barclays.dto.Employee;
 
-public class EmployeeDAOImpl implements EmployeeDAO {
+public class EmployeeDAOImpl implements EmployeeDAO, Cloneable {
+
+	private static EmployeeDAO INSTANCE = null;
+
+	private EmployeeDAOImpl() {
+	}
+
+	public static synchronized EmployeeDAO getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new EmployeeDAOImpl();
+		}
+		return INSTANCE;
+	}
 
 	@Override
 	public int createEmployeeRecord(Employee employee) {
@@ -195,6 +207,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e.printStackTrace();
 		}
 		return listEmployee;
+	}
+
+	protected Object clone() throws CloneNotSupportedException {
+		throw new CloneNotSupportedException("Object is not able to clone");
 	}
 
 }

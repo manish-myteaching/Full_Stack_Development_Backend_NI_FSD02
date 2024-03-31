@@ -1,5 +1,6 @@
 package com.barclays.dto;
 
+//POJO
 public class Employee {
 	private int empId;
 	private String empName;

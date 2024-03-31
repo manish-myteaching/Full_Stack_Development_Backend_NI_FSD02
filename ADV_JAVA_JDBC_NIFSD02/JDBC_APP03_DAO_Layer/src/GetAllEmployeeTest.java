@@ -8,7 +8,9 @@ public class GetAllEmployeeTest {
 
 	public static void main(String[] args) {
 		// Persistance Layer
-		EmployeeDAO empDAO = new EmployeeDAOImpl();
+		//EmployeeDAO empDAO = new EmployeeDAOImpl();
+		EmployeeDAO empDAO=EmployeeDAOImpl.getInstance();
+		
 		List<Employee> list = empDAO.getEmployeeRecord();
 		list.stream().map(e -> {
 			int k = -2;
