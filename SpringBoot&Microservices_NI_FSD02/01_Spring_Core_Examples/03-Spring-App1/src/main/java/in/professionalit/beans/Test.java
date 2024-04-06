@@ -8,7 +8,7 @@ public class Test {
 	public static void main(String[] args) {
 
 		ApplicationContext context = 
-				new ClassPathXmlApplicationContext("Beans.xml");
+				new ClassPathXmlApplicationContext("./applicationContext.xml");
 		
 		PaymentService service = 
 				context.getBean(PaymentService.class);
