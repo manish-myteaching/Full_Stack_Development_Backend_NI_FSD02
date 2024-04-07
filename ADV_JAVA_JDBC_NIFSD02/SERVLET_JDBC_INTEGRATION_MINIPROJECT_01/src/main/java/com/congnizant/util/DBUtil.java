@@ -1,10 +1,14 @@
 package com.congnizant.util;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import com.congnizant.constant.CommonConstant;
 
@@ -22,13 +26,25 @@ public class DBUtil {
 	/*
 	 * get connection
 	 */
-	public static Connection getConnection() throws SQLException {
+	public static Connection getConnection() {
 		// step2 create the connection object
-		Connection con = DriverManager.getConnection(CommonConstant.URL, CommonConstant.USER, CommonConstant.PASSWORD);
+		// Connection con = DriverManager.getConnection(CommonConstant.URL,
+		// CommonConstant.USER, CommonConstant.PASSWORD);
+		Connection con = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/MyLocalDB");
+			System.out.println("DataSource: "+ ds);
+			con = ds.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException ne) {
+			ne.printStackTrace();
+		}
 		return con;
 	}
 
-	public static void closeConnection(Statement stmt, Connection con)  {
+	public static void closeConnection(Statement stmt, Connection con) {
 		try {
 			if (stmt != null) {
 				stmt.close();
