@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	 <!-- DataSources cfg -->
+	 <bean id="oraDmds"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	     <property name="url"  value="jdbc:oracle:thin:@localhost:1521:xe"/>
+	     <property name="username" value="manish"/>
+	     <property name="password" value="manish"/>
+	 </bean>
+	 <bean id="mysqlDmds"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	     <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+	     <property name="url"  value="jdbc:mysql:///manish"/>
+	     <property name="username" value="root"/>
+	     <property name="password" value="root"/>
+	 </bean>
+	 
+	 
+	 <!-- DAO classes cfg -->
+	 <bean id="oraCustDAO"   class="com.professionalit.dao.CustomerOracleDAOImpl">
+	       <constructor-arg name="ds"  ref="oraDmds"/>
+	 </bean>
+	 
+	  <bean id="mysqlCustDAO"   class="com.professionalit.dao.CustomerMySQLDAOImpl">
+	       <constructor-arg name="ds"  ref="mysqlDmds"/>
+	 </bean>
+	 
+	 <!-- service class cfg -->
+	 <bean id="custService"  class="com.professionalit.service.CustomerMgmtServiceImpl">
+	      <constructor-arg name="dao" ref="oraCustDAO"/>
+	       <!-- <constructor-arg name="dao" ref="mysqlCustDAO"/> --> 
+	 </bean>
+	 
+	 <!-- Controller class cfg -->
+	 <bean id="controller"  class="com.professionalit.controller.MainController">
+	         <constructor-arg  name="service" ref="custService"/>
+	 </bean>
+	
+
+
+</beans>
