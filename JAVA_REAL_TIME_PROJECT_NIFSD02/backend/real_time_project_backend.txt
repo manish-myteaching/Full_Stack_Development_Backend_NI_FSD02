@@ -1,0 +1,55 @@
+1) Create Multipal Project for micro services architecture
+     elps-api gatway
+     elsp-admin server
+     elsp-registry server
+     elsp-config server
+     elsp-zipkin server
+
+     elsp-user-auth-service
+     elsp-enrollement Service
+     elsp-Linking Service
+     elsp-Transfer Service
+     elsp-Card VarifyService
+
+2) Create infrastructure by devops team on Cloud(AWS,AZURE) (Architect level)
+
+     Dev Env
+     QA Env
+     UAT Env
+     Production Evn 
+
+     Git/Bitbucket --- > Source code management
+     JIRA   --> SDLC
+     Wiki Pages--> Documentation management 
+
+3) Create Repository and project structure (Architect level)
+ 
+4) Install All mandatory Software for local system for development on local system (
+   
+    S/W: JAVA/python,Maven,GitBash,Tortoise git,Oralce DB/MySQL 
+
+    IDE: STS or intellJ, Visual Studio Code, SQL Devloper, Postman,WinScp,Putty/MobaStream
+
+5) Create Project folder structure in layers(presentation, Service, persistence, Integration)
+     elsp-user-auth-service
+     elsp-enrollement Service
+     elsp-Linking Service
+     elsp-Transfer Service
+     elsp-Card VarifyService
+
+     presentation----> controller package
+     service  --->      service package
+     persistence ---> dao package
+ 
+          
+
+
+
+ 
+
+
+    
+
+    
+     
+
